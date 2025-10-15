@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -37,6 +37,164 @@
         <p>
             Don't have an account? <a href="{% url 'signup' %}">Sign Up</a>
         </p>
+    </div>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        /* 🌸 Body background aesthetic pastel blur */
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* soft overlay blur for dreamy aesthetic */
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(12px);
+            z-index: 0;
+        }
+
+        /* 🌈 Login card (glass effect) */
+        .auth-container {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            width: 360px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.8s ease;
+        }
+
+        h2 {
+            background: linear-gradient(135deg, #ffb6c1, #b5c7f3, #c3f7e3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px 16px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #ffb6c1;
+            box-shadow: 0 0 8px rgba(255, 182, 193, 0.5);
+        }
+
+        button {
+            background: linear-gradient(135deg, #ffb6c1, #ffc3a0);
+            color: white;
+            padding: 12px 20px;
+            margin-top: 12px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .error {
+            background-color: #fcebeb;
+            color: #a94442;
+            border: 1px solid #ebccd1;
+        }
+
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 18px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        p a {
+            color: #ff7eb9;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+
+        /* ✨ Smooth fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <h2>Log In to Social Feed</h2>
+        
+        {% for message in messages %}
+        <div class="message {{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Log In</button>
+        </form>
+
+        <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
     </div>
 </body>
 </html>
