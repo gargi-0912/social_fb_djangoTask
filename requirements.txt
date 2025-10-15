@@ -1,0 +1,6 @@
+Django>=4.0
+djangorestframework>=3.13
+psycopg2-binary  # For PostgreSQL
+django-redis>=5.0
+pymongo>=4.0     # For MongoDB logging
+pillow>=9.0   # For image handling
